@@ -7,8 +7,10 @@ const ProductCard = ({ product }) => {
 
   const { cart, dispatch } = useCart();
 
-  const handleAddToCart = () => dispatch({ type: "ADD_TO_CART", payload: product });
-  const handleRemoveFromCart = () => dispatch({ type: "REMOVE_FROM_CART", payload: { id: product.id } });
+  const handleAddToCart = () =>
+    dispatch({ type: "ADD_TO_CART", payload: product });
+  const handleRemoveFromCart = () =>
+    dispatch({ type: "REMOVE_FROM_CART", payload: { id: product.id } });
 
   const inCart = cart.find((item) => item.id === product.id);
 
@@ -25,7 +27,14 @@ const ProductCard = ({ product }) => {
             : description}
         </p>
         <p>Price : ${price}</p>
-        <button className= {`btn btn-outline mt-2 ${inCart ? " btn-warning" : "btn-accent" }`} onClick={inCart? handleRemoveFromCart : handleAddToCart }>{ inCart ? "Remove from Cart" : "Add to Cart "}</button>
+        <button
+          className={`btn btn-outline mt-2 ${
+            inCart ? " btn-warning" : "btn-accent"
+          }`}
+          onClick={inCart ? handleRemoveFromCart : handleAddToCart}
+        >
+          {inCart ? "Remove from Cart" : "Add to Cart "}
+        </button>
       </div>
     </div>
   );

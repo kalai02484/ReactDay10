@@ -6,13 +6,14 @@ const CartItem = ({ item }) => {
   const {cart, dispatch } = useCart();
 
   return (
-    <div className="border p-4 rounded-lg shadow-md">
-      <img
-        src={item.image}
-        alt={item.title}
-        className="h-40 w-full object-contain mb-4"
-      />
-      <h2 className="text-xl font-semibold mb-2">{item.title}</h2>
+
+    <div className="card bg-base-100 shadow-md hover:shadow-xl transition-shadow duration-300 border-2 border-gray-200">
+      <figure className="flex flex-col p-5 bg-accent/10">
+        <img className="h-64 w-auto object-contain" src={item.image}
+        alt={item.title} />
+      </figure>
+      <div className="card-body">
+        <h2 className="text-xl font-semibold mb-2">{item.title}</h2>
       <p className="mb-2">Price: ${item.price}</p>
       <div className="flex items-center mb-4">
         <button
@@ -41,7 +42,9 @@ const CartItem = ({ item }) => {
       >
         Remove from Cart
       </button>
+      </div>
     </div>
+
   );
 };
 

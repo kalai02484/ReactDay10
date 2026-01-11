@@ -6,6 +6,10 @@ import EmptyCart from "../assets/images/cart.jpg";
 const Cart = () => {
   const { cart } = useCart();
 
+  const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const discount = totalPrice * 0.1; // 10% discount
+  const finalPrice = totalPrice - discount; 
+
   return (
     <>
       <div className="container mx-auto my-10 px-4">
@@ -25,6 +29,14 @@ const Cart = () => {
                 <CartItem key={item.id} item={item} />
               ))}
             </div>
+            <div className="mt-8 p-6 border-t text-right">
+              <h2 className="text-2xl mb-4">Order Summary</h2>
+              <p className="mb-2">Total Price: ${totalPrice.toFixed(2)}</p>
+              <p className="mb-2">Discount (10%): -${discount.toFixed(2)}</p>
+              <h3 className="text-xl font-semibold">
+                Final Price: ${finalPrice.toFixed(2)}
+              </h3>
+            </div> 
           </div>
         )}
       </div>
